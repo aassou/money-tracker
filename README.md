@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Money Tracker MERN App
+
+This is a fullstack MERN simple application built to track my spendings.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
