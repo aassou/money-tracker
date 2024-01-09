@@ -1,5 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react'
+import SpeechToText from './components/SpeechToText'
 
 function App() {
 	const [name, setName] = useState('')
@@ -7,24 +8,24 @@ function App() {
 	const [description, setDescription] = useState('')
 	const [price, setPrice] = useState('')
 	const [transactions, setTransactions] = useState([])
-  const [balance, setBalance] = useState(0)
+  	const [balance, setBalance] = useState(0)
 
 	useEffect(() => {
-    getTransactions().then((transactions) => {
-      let sum = 0;
-  
-      for (const transaction of transactions) {
-        const transactionPrice = parseFloat(transaction.price);
-  
-        if (!isNaN(transactionPrice)) {
-          sum += transactionPrice;
-        }
-      }
-  
-      setTransactions(transactions);
-      setBalance(sum);
-    });
-  }, []);
+		getTransactions().then((transactions) => {
+			let sum = 0;
+		
+			for (const transaction of transactions) {
+				const transactionPrice = parseFloat(transaction.price);
+		
+				if (!isNaN(transactionPrice)) {
+				sum += transactionPrice;
+				}
+			}
+		
+			setTransactions(transactions);
+			setBalance(sum);
+		});
+  	}, []);
 
 	
 	async function getTransactions() {
@@ -53,18 +54,19 @@ function App() {
 				console.log('result', json)
 			})
 
-      const updatedTransactions = await getTransactions();
-      setTransactions(updatedTransactions);
+			const updatedTransactions = await getTransactions();
+			setTransactions(updatedTransactions);
 
 			setName('')
-      setPrice('')
-      setDescription('')
-      setDatetime('')
+			setPrice('')
+			setDescription('')
+			setDatetime('')
 		})
 	}
 
 	return (
 		<main>
+			{<SpeechToText />}
 			<h1>$ {balance}<span>.00</span></h1>
 			<form onSubmit={addNewTransaction}>
 				<div className='basic'>
